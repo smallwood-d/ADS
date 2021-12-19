@@ -2,7 +2,7 @@ import dgram, { Socket } from 'dgram';
 import { Buffer } from 'buffer';
 
 import { getInterfaces } from '../utils';
-import cfg from '../resources/cfg.json';
+import cfg from '../../resources/cfg.json';
 
 export class ADSServer{
 

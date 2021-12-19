@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "Auto Discovery service",
   "main": "target/index.js",
+  "type": "module",
   "scripts": {
-    "clinet": "node target/client/client.js",
-    "server": "node target/server/server.js",
+    "start": "node --experimental-specifier-resolution=node target/index.js",
     "clean": "rm -rf target",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", ".vscode"],
   "author": "",
   "license": "ISC",
   "dependencies": {},
