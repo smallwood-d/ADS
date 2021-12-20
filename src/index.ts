@@ -1,15 +1,8 @@
-import cfg from './resources/cfg.json';
-import { ADSServer, ADSClient } from "./MulticastBeacon";
+import cfg from './resources/cfg.json'
+import {ServerData} from './client';
+import {runServer} from './server';
 
-let s = new ADSServer(cfg.S_PORT);
-
-s.init();
-s.brodcastLoop("hello", 3000, ["localhost"]);
-
-
-
-let c = new ADSClient(cfg.C_PORT);
-
-c.init();
-c.on('server', (msg) => console.log("asdaaaaaaaaaaaaaaaaaaaaaaaaaaaa", msg));
-c.listen();
+const serverData = new ServerData(cfg.C_PORT);
+serverData.runClient();
+serverData.on('newServer', (name: string) => console.log(name));
+runServer(cfg.S_PORT, 3000);

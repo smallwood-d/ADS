@@ -53,7 +53,7 @@ export class ADSClient extends EventEmitter{
 
   private handleMessage(msg: Buffer, rinfo: any) {
         console.log(`client got: msg from ${rinfo.address}:${rinfo.port}`);
-        this.emit('message', this.messageHadler(msg));
+        this.emit('server', this.messageHadler(msg));
   }
   
   public listen() {
