@@ -1,4 +1,4 @@
-import { ADSClient } from "./MulticastBeacon";
+import { ADSClient } from "../MulticastBeacon";
 import { Buffer } from 'buffer';
 import { beaconMsg } from './utils';
 import EventEmitter from 'events';
@@ -16,10 +16,14 @@ export class ServerData extends EventEmitter {
         return this._port;
     }
 
+    get serverDB(): Map<string, any> {
+        return ServerData.db;
+    }
+
     private parseMsg(msg: Buffer) : void {
         const msgJSON: beaconMsg = JSON.parse(msg.toString());
         if (!ServerData.db.has(msgJSON.name)) {
-            this.emit('newServer', msgJSON.name);
+            this.emit('newServer', msgJSON);
         }
         ServerData.db.set(msgJSON.name, {...msgJSON, date:new Date()});
         
